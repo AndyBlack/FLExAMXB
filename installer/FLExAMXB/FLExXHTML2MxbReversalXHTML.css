@@ -1,0 +1,357 @@
+/*CSS for MXB-style reversal index dictionary*/
+
+head title  {
+	font-size: 44pt ;
+	line-height: 48pt ;
+	margin-bottom: 24pt ;
+	prince-page-group: start;
+    /*replace hyphen or em-dash with hairspace on either side of emdash */
+    prince-text-replace: "—" "— " "-" " – " ;
+    string-set: Title_String content() ;
+	page: first ;
+	counter-reset: page 1 ;
+}
+
+head meta[name='footer'] {
+	string-set: Footer_String attr(content);
+}
+
+/* Only works in content, not in a counter-reset
+head meta[name='startingPageNumber'] {
+	string-set: Starting_Page_Number_String attr(content);
+}
+*/
+.GuideWord { content:""; string-set: Guideword_String content() ; font-size:0%; line-height:0pt;}
+
+.Reversal_Entry > .Headword_Reference:before {content:"\00a0";}
+.subentry > .Headword_Reference:before {content:"\00a0";}
+.Headword_Reference {}
+
+.Homograph_Number {
+position:relative;
+    font-size:xx-small;
+    bottom:-0.5ex;
+/*    margin-left:0.2em;
+    margin-right:0.1em;*/
+/*font-size:xx-small; vertical-align:sub;  */
+line-height:none; 
+}
+
+.Lemma { counter-reset: Sense_Number_Counter ; font-weight: bold ; font-size: 11pt ; margin-left: -12pt ; }
+.Lemma:after {  font-size: 10pt ; content: "\00a0"; }
+
+.Part_Of_Speech {display: inline ; font-style: italic ; }
+.Part_Of_Speech:after  {content: "\00a0"; font-weight: normal ;  }
+.Part_Of_Speech:before {content: " " ;  }
+.Sense_Group .Part_Of_Speech:before {content: "" ;  }
+.Part_Of_Speech:contains('.'):after {content: "\00a0" ; }
+
+.Restriction:before { content: " (" ;   }
+.Restriction:after { content: ")" ;  }
+.Restriction { prince-text-replace: ". " ".\00a0" ; font-style: italic ; }
+
+.Sense_Group:before {content: " "   counter(Sense_Number_Counter) ".\00a0" ; }
+.Sense_Group {display: inline ; margin: 0 ;  counter-increment: Sense_Number_Counter 1 ;  }
+.Sense_Group ~ .Sense_Group {
+    display: block ;
+    margin: 0 ; 
+    text-indent: 0pt ;
+    widows: inherit;
+	orphans: inherit;
+	}
+
+.Subentry:before { font-famiy: "Times New Roman"; content: "\2666  " ;  margin-left: -7pt ; /* font-size:150% */}
+.Subentry {
+    font-weight: bold ;
+    counter-reset: Subentry_Sense_Number_Counter ;
+    } 
+.Subentry:after {content: "\00a0" ; }
+
+.Subentry_Group {
+    display: block ; 
+    margin-left: 17.5pt ;
+    widows: inherit;
+	orphans: inherit;
+    }
+/*.Subentry_Group:after {content: "\00a0"; }*/
+
+/*.Subentry_Sense_Group:before {content: " " ; }*/
+.Subentry_Sense_Group_Same_Restriction_Single:before {content: " " ; }
+.Subentry_Sense_Group_Same_Restriction_Single + .Subentry_Sense_Group:before {content: ", " ; }
+.Subentry_Sense_Group:before {content: " "  counter(Subentry_Sense_Number_Counter) ".\00a0"; }
+.Subentry_Sense_Group {
+    display: inline ; 
+    margin: 0 ;
+    counter-increment: Subentry_Sense_Number_Counter 1 ;
+    }
+.Subentry_Sense_Group_Same_Restriction + .Subentry_Sense_Group {
+    display: inline ; 
+    margin: 0 ;
+    counter-increment: Subentry_Sense_Number_Counter 0 ;
+    }
+.Subentry_Sense_Group + .Subentry_Sense_Group:before { content: "\00a0  " counter(Subentry_Sense_Number_Counter) ".\00a0";  }
+/*.Subentry_Sense_Group ~ .Subentry_Sense_Group:before { content: "\00a0 ";  }*/
+/*.Subentry_Sense_Group ~ .Subentry_Sense_Group:before { content: "; ";  }*/
+
+/*.Subentry_Sense_Group_Same_Restriction:before {content: " " ; }*/
+.Subentry_Sense_Group_Same_Restriction:before {content: " " counter(Subentry_Sense_Number_Counter) ".\00a0"; }
+.Subentry_Sense_Group_Same_Restriction + .Subentry_Sense_Group_Same_Restriction {
+    display: inline ; 
+    margin: 0 ;
+    counter-increment: Subentry_Sense_Number_Counter 0 ;
+    }
+.Subentry_Sense_Group_Same_Restriction {
+    display: inline ; 
+    margin: 0 ;
+    counter-increment: Subentry_Sense_Number_Counter 1 ;
+    }
+.Subentry_Sense_Group_Same_Restriction + .Subentry_Sense_Group:before { content: ", ";  }
+.Subentry_Sense_Group_Same_Restriction + .Subentry_Sense_Group_Same_Restriction:before { content: ", ";  }
+
+div.Letter_Data { 
+   }
+div.Letter_Heading {
+    text-align: center ;
+    color: black ;
+    font-family: "Charis SIL AmArea" ;
+	font-size: 48pt;
+	font-weight: bold;
+	height: 60pt;  /* allow for descender */
+    margin: 24pt 0 0 0 ;
+    /* margin-left: -0.25in ; */  /* align with entry */
+    prince-bookmark-level: 1;  /* add letters to PDF bookmark */
+    prince-bookmark-label: content() ;
+    page-break-after: avoid ;
+    column-break-after: avoid ;
+    font-family:   "Charis SIL AmArea" ;
+
+}
+
+div.Reversal_Entry { 
+	display: block;
+	color:black;
+	font-size: 10pt; 
+	line-height: 11.5pt; /* 12.5pt;*/
+	margin: 0 0 0 11pt  ;
+	padding: 0 0 0 0;
+	margin-bottom: 2pt ;
+	page-break-inside: auto ;
+	text-align: left ;
+	widows: 1 ;
+	orphans: 1;
+}
+
+a {
+    text-decoration:none;
+    color:black;
+}
+/* ************************************** */
+/* ********** page ********************** */
+/* ************************************** */
+
+
+@page spine {
+	size: 0.75in 8in portrait;
+	@top-center {
+	border-bottom: none ;    
+	content: normal;
+        }
+	@top-left {
+	border-bottom: none ;    
+	content: normal;
+        }
+	@top-right {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@bottom-left {
+	content: normal;
+	}
+	@bottom-center {
+	content: normal;
+	}
+	@bottom-right {
+	content: normal;
+}}
+
+@page front_matter {
+	/* override default page setting so there is no content */
+	@top-left {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@top-center {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@top-right {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@bottom-left {
+	content: normal;
+	}
+	@bottom-center {
+	content: normal;
+	}
+	@bottom-right {
+	content: normal;
+}}/* end front matter */
+
+@page back_matter {
+	/* override default page setting so there is no content */
+	@top-center {
+	content: normal;
+	}
+	@bottom-left {
+	content: normal;
+	}
+	@bottom-center {
+	content: normal;
+	}
+	@bottom-right {
+	content: normal;
+}}/* end front matter */
+
+@page :first { 
+        @top-left { content: none }
+        @top-right {content: none }
+        @top-center { content: none}
+        @bottom-left {content: none}
+        @bottom-center { 
+            font-size: 10pt;
+     	   content: string( Footer_String); 
+                }
+        @bottom-right {content: none }
+}
+
+
+/* this should be at end of file in order to read the size: correctly for Princess */
+/* Cascading Style Sheet for reversals; 8.5 x 11 inch layout info */
+
+body {
+	font-family: "Charis SIL AmArea" ;
+        column-count: 2; -moz-column-count: 1; -webkit-column-count: 1;
+	column-fill: auto;
+	column-gap: .25in; -moz-column-gap: .25in; -webkit-column-gap: .25in;
+/*    column-fill: balance ;  */
+    font-size: 10pt ;
+    counter-reset: page 297;
+    /*string does not work here: counter-reset: page string(Starting_Page_Number_String);*/ 
+  }
+
+@page
+    {
+        /* to use Princess for pictures: page size in inches and portrait required ... in inches */
+        size: 8.5in 11in portrait ;
+        margin: 1in 1in 1in 1in ;
+        margin-top: .75in;
+        margin-outside: .5in;
+        margin-bottom: .75in;
+        margin-inside: .75in;
+
+        font-family: "Charis SIL AmArea" ;  
+        direction: ltr;
+        font-weight: normal;
+        font-size: 4pt;
+    /*    marks: crop cross ;*/
+    
+         
+    	@top-center  {
+           font-weight: normal ;
+    	   border-bottom: none ;
+               margin-bottom: 0pt ; 
+    	   margin-top: 0pt ;
+            font-size: 10pt;
+     	   content: string( Title_String); 
+           font-size: 11pt ; 
+    }
+        @top-left {  
+           font-size: 11pt ; 
+           content: normal ; 
+           border-bottom: none ; 
+           margin-bottom: 0pt ;
+    	   margin-top: 0pt ;
+     }
+        @top-right {  
+           font-size: 11pt ; 
+           content: normal ; 
+           border-bottom: none ; 	
+           margin-bottom: 0pt ;
+    	   margin-top: 0pt ;
+    }
+        @bottom-left {  content: normal ; }
+        @bottom-center { 
+            font-size: 10pt;
+     	   content: string( Footer_String); 
+     	   margin-top: -13pt;
+    }    
+        @bottom-right { content: normal }
+    }
+    
+/* Running Head Mirrored.css */
+@page :left {      
+    margin: .75in .75in .75in .5in ;
+    
+    @top-left {
+        content: string( Guideword_String, first);
+       /*margin-left: -12pt;*/
+       }
+    @top-center    
+    { 
+    }
+
+    @top-right {        
+        /*font-size: 10pt; */ 
+        content: counter( page);
+    }
+
+    @bottom-left 
+    {
+    }
+
+   @bottom-center
+   {
+                          font-size: 10pt;
+     	   content: string( Footer_String); 
+   }
+   @left-top
+    {
+	content: flow(locator_left) ;
+   	    margin-right: 0;
+        text-align: left ;
+  }
+}
+
+@page :right {
+        margin: .75in .5in .75in .75in ;
+   
+    @top-right  
+    {
+        content: string( Guideword_String, last);
+    }
+   
+   
+   
+   @bottom-center
+   {
+            font-size: 10pt;
+     	   content: string( Footer_String); 
+   }
+     @bottom-right   
+    { 
+    }
+    @top-left 
+    {        content: counter(page); 
+        /* font-size: 10pt; */ 
+        /* margin-left: -12pt;  */
+    }
+    @right-top
+    {
+content: flow(locator_right) ;
+        margin-left: 0;
+        text-align: right ;
+
+}
+
+}

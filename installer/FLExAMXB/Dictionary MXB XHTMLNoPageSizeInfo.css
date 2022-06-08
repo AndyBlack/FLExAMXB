@@ -1,0 +1,969 @@
+/* Cascading Style Sheet for dictionaries */
+
+    /* 
+    content: "\00a0";  non breaking space above if needed
+    content: "\200B";  zero width space
+     */
+
+
+    
+/* ************************************** */
+/* **************** spans *************** */
+/* ************************************** */
+
+/****/
+/* This section is for dealin with custom fields created by specific users. */
+/* 2021.07.05 custom for Humberto Iglesias who has an object prefix custom field in senses (for Nahuatl) */
+span.objeto span.name:before {content: "[" ; font-weight: normal ; font-style: normal ;}
+span.objeto span.name{font-weight: bold ; font-style: normal ; }
+span.objeto span.name:after {content: "]" ;  font-weight: normal ; font-style: normal ;}
+
+
+
+.Strong {font-weight: bold ;  }
+.Strong:after {content: "" !important ; }
+
+.Dictionary-Vernacular {font-weight: bold ; font-style: normal ; }
+<!--.Emphasized_Text {font-weight: bold ; font-style: normal ; }-->
+.Emphasized_Text { prince-text-replace: ". " ".\00a0" ; font-weight: normal ; font-style: italic ; }
+.Notes_Grammar > .Emphasized_Text {font-weight: bold ; font-style: normal ; }
+.Notes_Grammar > .Emphasized_TextSpanish {font-weight: normal ; font-style: normal ; }
+.Notes_Grammar > .Vernacular_Text {font-weight: bold ; font-style: normal ; }
+.Emphasized_Text:after {content: ""  }
+.Emphasized_Text:before {content: "" ;  }
+.Emphasized_TextSpanish {  font-style: italic  ; }
+
+span:empty { margin-left: 0 ; margin-right: 0pt ; }
+a:empty { margin-left: 0 ; margin-right: 0pt ; }
+
+
+* /*
+span:before { content: "  " ; }
+a:before { content: "  " ; }
+*/
+
+
+/*
+span:last-of-type::after { content: ".\200B" :  }
+span:last-of-type:contains("."):after { content: "\200B" ;  }
+span:last-of-type:contains("?"):after { content: "\200B" ; }
+span:last-of-type:contains("!"):after { content: "\200B" ; }
+*/
+
+.Gloss[lang=es]:after  {content: "." ; }
+.Gloss[lang=es] + .Part_Of_Speech  { margin-left: 0   !important; ; }
+
+a {
+    color:black ;
+    line-height: 0 ; 
+    text-decoration: none;
+    line-height: 11.5pt; /*12.5pt;*/
+}
+
+span { 
+    line-height: 11.5pt; /*12.5pt;*/
+}
+
+
+
+.Borrowed_Word + .Borrowed_Word:before  {content: "; " ; }
+.Borrowed_Word {}
+.Borrowed_Word:after  {content: ".\00a0"; font-weight: normal ; }
+.Borrowed_Word:before  {content: " Borrowed word: ";  font-weight: normal; font-style: italic ; }
+.Comment {  font-style: italic  ; }
+.Comment:after { content: ")\00a0" ; }
+.Definition + .Comment:before { content: " (" ; }
+.Cross_Reference {font-weight: bold ; }
+.Cross_Reference:after {content: ""; }
+.Cross_Reference + .Cross_Reference:before {content: ", ";}
+.xitem + .xitem .Cross_Reference:before {content: ", ";}
+.xitem ~ .xitem:last-child .Cross_Reference:after {content: "\00a0"; }
+.Cross_Reference:before {content: "" ; } 
+.Notes_Grammar + .Cross_Reference_Group { display: inline ;  }
+.Cross_Reference_Group { }
+.crossref-targets + .primaryrefs:before { content: " \00a0"; }
+.crossref-targets + .primaryrefsContinued:before { content: ""; }
+.Cross_Reference_Type {  font-style: italic ; }
+.Cross_Reference_Type:after { content: " " ;}
+.Cross_Reference_Type:first-child:before { content: "" ;}
+.Cross_Reference_Type ~ .Cross_Reference_Type:before { content: " \00a0" ;}
+.variantrefs01 + .primaryrefs  .Cross_Reference_Type:before { content: " \00a0" ;}
+.Notes_Grammar + .primaryrefs  .Cross_Reference_Type:before { content: " \00a0" ;}
+.Linguistic_Information_Group + .primaryrefs  .Cross_Reference_Type:before { content: "\00a0" ;}
+.variantrefs01 + .primaryrefsContinued  .Cross_Reference_Type:before { content: " \00a0" ;}
+.Notes_Grammar + .primaryrefsContinued  .Cross_Reference_Type:before { content: " \00a0" ;}
+.Linguistic_Information_Group + .primaryrefsContinued  .Cross_Reference_Type:before { content: "\00a0" ;}
+.Notes_Grammar + .primaryrefs .Cross_Reference_Type:before { content: " " ;}
+.Notes_Grammar + .Cross_Reference_Type:before { content: " " ;}
+.variantformentrybackrefs + .Cross_Reference_Type:before { content: " \00a0 " ;}
+.Cross_Reference_Type:before { content: "\00a0" ;}
+.variantrefs01 + .Cross_Reference_Type:before { content: " \00a0 " ;}
+.Definition { font-weight: normal ; }
+.Subentry ~ .Definition:after {content: ""; }
+.Definition:after {content: "\00a0"; }
+.Definition ~ .Definition:before {content: ", " ; } 
+.Definition:before {content: " " ; } 
+.Sense_Group > .Prefijo:first-child:before {content: "\00a0(" ; font-weight: bold ; } 
+.Sense_Group > .Prefijo:first-child:after {content: ") " ; font-weight: bold ; } 
+.Sense_Group > :first-child:before {content: "\00a0" ; } 
+.Definition_Descriptive { font-style: italic ; }
+.Definition_Descriptive + .Example_Group:before {content: " "; }   
+.Definition_Descriptive:after {content: ""; }   
+.Definition_Descriptive:before {content: " " ; } 
+.Definition_Descriptive_Long { font-style: italic ; }
+.Definition_Descriptive_Long + .Example_Group:before {content: " "; }   
+.Definition_Descriptive_Long:after {content: "\00a0"; }   
+.Definition_Descriptive_Long:before {content: " " ; } 
+.Description_Brief { font-style: italic ; }
+.Description_Brief + .Example_Group:before {content: "\00a0 "; }   
+.Description_Brief:after {content: ""; }   
+.Description_Brief:before {content: " " ; } 
+
+.Dialect { }
+.Dialect:before {content: "(" ;  }
+.Dialect ~ .Dialect:before {content: ", " ;  }
+.Dialect:after {content: ")\00a0" ; }
+
+.Dictionary-Contrasting { font-style:italic;}
+.Example_Groups:before {content:"; p.\00a0ej., " ;}
+.Example_Group {  }
+.Restriction + .Example_Group:before { content:"\00a0"; }
+/*.Example_Group + .Example_Group:before { content: "; " ; }*/
+.Example_Groups    .Example:after { content: "\00a0" ; }
+.Example_Groups    .Example:before { content: "" ; }
+.Example_Groups    .Example + .Example:after { content: "" ;  }
+.Example_Groups    .Example { } 
+.Example_Groups:after { content: ".\00a0" ;  }
+
+.Encyclopedic_Information:before { content: " ("; }
+.Encyclopedic_Information:after { content: ")\00a0"; }
+.Encyclopedic_Information { font-style: italic ; }
+.Encyclopedic_Information  > .Emphasized_Text { font-style: normal ; font-weight: bold; }
+.Encyclopedic_Information  > .Emphasized_TextSpanish { font-style: normal ; font-weight: normal; }
+.Entry_Reference_Type {}
+.Entry_Reference_Type:after {content: "\00a0" ; }
+.Entry_Reference_Type:before {content: " " ; }
+
+.Example_Group {  }
+.Example {  }
+.Example:first-of-type { font-weight: bold ; }
+.Minor_Entry .Example:after { content: "" ;   }
+.Example:after { content: "\00a0" ;   }
+.Example:before { content: " " ;  }
+.Translation {  }
+.Translation:first-of-type { font-weight: normal ; }
+.Translation:after { content: "\00a0" ;   }
+.Translation:before { content: " " ;  }
+.Definition_Descriptive + .Example_Group .Example:after { content: "" ;   }
+.Definition_Descriptive + .Example_Group .Translation:after { content: "" ;   }
+.Definition_Descriptive_Long + .Example_Group .Example:after { content: "\00a0" ;   }
+.Definition_Descriptive_Long + .Example_Group .Translation:after { content: "" ;   }
+.Font_Vernacular {font-weight: bold ;  }
+.Font_Vernacular ~ .Font_Vernacular:before  {content: "; "; font-weight: normal; font-style: normal ; }
+
+.Gloss + .Sense_Number:before { content: ""  ;} 
+.Gloss[lang=es] {}
+.Gloss[lang=es]:after  {content: ".\00a0"; font-weight: normal ;  }
+
+.GuideWord { content:""; string-set: Guideword_String content() ; font-size:0%; line-height:0pt;}
+
+.Homograph_Number {
+position:relative;
+    font-size:xx-small;
+    bottom:-0.5ex;
+/*    margin-left:0.2em;
+    margin-right:0.1em;*/
+/*font-size:xx-small; vertical-align:sub;  */
+line-height:none; 
+}
+.Lemma + .Cross_Reference_Group:before { content: "" ;}
+.Picture_Group + .Lemma { counter-reset: Sense_Number_Counter ; string-set: Guideword_String content() ; font-weight: bold ; font-size: 11pt ; padding-left: 6pt ;}
+.Lemma { counter-reset: Sense_Number_Counter ; font-weight: bold ; font-size: 11pt ; margin-left: -12pt ; }
+.Lemma:after {  font-size: 10pt ; content: "\00a0"; }
+
+.Lexical_Function { font-style: italic ; prince-text-replace: ". " ".\00a0" ; } /* replace space with nbsp */
+.Lexical_Function ~ .Lexical_Function:before { content: "; \200B" ; font-style: normal;  }
+.Lexical_Function:before { content: " " ;  }
+.Lexical_Function:after { content: "\00a0" ;  } 
+
+
+
+/* .Notes_Grammar + .Linguistic_Information_Group:before { content: "; " } */
+.Linguistic_Information_Group:first-child:before { content: "[" ;}
+.Linguistic_Information_Group:before { content: " ["; }
+.Linguistic_Information_Group:after { content: "]\00a0";  }
+.Linguistic_Information_Group { }
+.Linguistic_Information_Group > .Notes_Grammar {   }
+.Linguistic_Information_Group > .Notes_Grammar > .Emphasized_Text:before { content:" ";  }
+.Linguistic_Information_Group > .Notes_Grammar :before { content:"; "; font-style:normal;  }
+.Linguistic_Information_Group > .Notes_Grammar:after { content:""  }
+.Linguistic_Information_Group > .Variant_Group:before { content:" "  }
+.Linguistic_Information_Group > .Variant_Group:after { content:""  }
+.Sense_Group ~ .Linguistic_Information_Group > .Notes_Grammar { }
+.xitem + LexEntryInflTypeLink:before { content: "; "; }
+.Variant_Form + LexEntryInflTypeLink:before { content: "; "; }
+.Linguistic_Information_Group > .Variant_Form + .Variant_Type:before { content: "; "; }
+
+.Link_To_Lemma + .Link_To_Lemma:before  {content: ", " ; }
+.Link_To_Lemma {font-style: normal; font-weight: bold ; prince-text-replace: " " "\00a0" "-" "\2011"  ;  }
+.Link_To_Lemma:after  {content: ""; }
+.Link_To_Lemma:before  {content: ""; }
+.Link_To_Lemma:last:after  {content: "\00a0"; }
+
+.Normal { font-style:normal; font-weight: normal; }
+/*.Notes_Grammar { prince-text-replace: "Procl. cop. " "Procl.\00a0cop.\00a0"   "Gram. " "Gram.\00a0"; font-style: italic ;  }
+*/
+.Notes_Grammar { prince-text-replace: ". " ".\00a0" ; font-style: italic ;  }
+.Description_Brief + .Notes_Grammar:before  { font-style: normal ; content: " \00a0 [";   }
+.Variant_Form + .Notes_Grammar:before  { font-style: normal ; content: "";   }
+.Notes_Grammar:before  { font-style: normal ; content: " ";   }
+.Notes_Grammar:after  { content: "\00a0";   font-style: normal ; }
+
+.Notes_Grammar > .Font_Vernacular { font-style: normal}
+.Part_Of_Speech {display: inline ; font-style: italic ; }
+.Part_Of_Speech:empty:after  {content: ""; font-weight: normal ;  }
+.Part_Of_Speech:after  {content: "\00a0"; font-weight: normal ;  }
+.Part_Of_Speech:before {content: " " ;  }
+.Sense_Group .Part_Of_Speech:before {content: "" ;  }
+.Part_Of_Speech:contains('.'):after {content: "\00a0" ; }
+.Phonetic + .Phonetic:before  {content: "; " ; }
+.Phonetic {color: navy ; }
+.Phonetic:after  {content: "]\00a0";  font-weight: normal ;}
+.Phonetic:before  {content: " [";  font-weight: normal; font-style: normal ; }
+.Prefijo { font-weight: bold ; }
+.Prefijo:before {content: "(" ; font-weight: bold ;  }
+.Prefijo:after {content: ")\00a0" ; font-weight: bold ; }
+.primaryrefs > .entryref-component > .xitem:first-child:before { content:""; }
+.primaryrefs > .entryref-component > .xitem:before { content:", "; }
+.primaryrefs:after { content: "\00a0" ; }
+.complexformentryrefs:after { content: "\00a0" ; }
+.Pronunciation { }
+.Pronunciation:before {content: "(" ;  }
+.Pronunciation:after {content: ")\00a0" ; }
+
+.Regional_Variant:before {content: "(";}
+.Regional_Variant:after {content: ")\00a0";}
+.Regional_Variant {font-style:italic;}
+
+.Reference_Paragraph { 
+    display:block;
+    widows:inherit;
+    orphans:inherit;
+}
+
+.Restriction:before { content: "\200B(" ;   } /* no space before */
+.Restriction:after { content: ")" ;  }
+.Restriction { /*prince-text-replace: ". " ".\00a0" ;*/ font-style: italic ; }
+
+.Scientific_Name { font-style: italic ;}
+.Scientific_Name:after {content: "]\00a0" ; }
+.Restriction + .Scientific_Name:before {content: " [" ; }
+.Scientific_Name:before {content: " [" ; }
+
+.Subsense > .Subsense:before {content: "";};
+.Subsense > .Subsense {display: inline ; margin: 0 ;}
+.Subsense > .Subsense ~ .Subsense:before { content:", ";  }
+.Subsense > .Subsense ~ .Subsense { display: inline ; margin: 0 ; text-indent: 0pt ;  }
+.Subsense > .Definition:after { content: ""; }
+.Subsense > .Definition + .Restriction:before { content: " ("; }
+
+.subsenses > .Sense_Group:before {content: "";};
+.subsenses > .Sense_Group {display: inline ; margin: 0 ;}
+.subsenses > .Sense_Group ~ .Sense_Group { display: inline ; margin: 0 ; text-indent: 0pt ;  }
+.senses > .Sense_Group:before {content: " "  counter(Sense_Number_Counter) "." ; }
+.senses > .Sense_Group {display: inline ; margin: 0 ;  counter-increment: Sense_Number_Counter 1 ;  }
+.senses > .Sense_Group ~ .Sense_Group { display: block ; margin: 0 ; text-indent: 0pt ;  }
+
+.Subentry_Group > .Cross_Reference {font-weight: bold ; } 
+.Subentry_Group { display: block ; margin-left: 17.5pt ;  }
+/*.Subentry_Group:after {content: "\00a0"; }*/
+.Subentry:before { font-famiy: "Lucida Console"; content: "\2666  " ; margin-left: -7pt ; /* font-size:150% */}
+.Subentry {font-weight: bold ;  } 
+.Subentry:after {content: "\00a0" ; }
+/*.Subentry_Group:before {content: "\25AA\00a0\00a0" ; }*/
+
+
+.Usage[lang=es] + .Usage[lang=es]:before  {content: "; " ; }
+.Usage[lang=es] {}
+.Usage[lang=es]:after  {content: "; "; font-weight: normal ; }
+.Usage[lang=es]:before  {content: "Usage: "; font-weight: normal; font-style: italic ; }
+.Variant_Form + .Variant_Form:before {content:", ";}
+.Variant_Form  { font-weight: bold ; }
+/*.Variant_Form  { font-weight: bold ;  prince-text-replace: " " "\00a0" "-" "\2011"  ;} /\* replace space with nbsp; replace hyphen with non-breaking hyphen *\/*/
+.Linguistic_Information_Group .Variant_Form:before {content: " "; }
+.Minor_Entry { }
+.Variant_Group_Minor:before {  content: " {";   }
+.Variant_Group_Minor:after { content: "}\00a0" ; }
+.Variant_Group  {  }
+.Variant_Group + .Variant_Group:before {content: "; " ; } 
+.Variant_Group > .Notes_Grammar { display: inline ;   }
+.Variant_Group > .Notes_Grammar:after  { content: "";  }
+.Variant_Group > .Notes_Grammar:before  { content: " ";  }
+.Variant_Group > :first-child:before  { content: "";  }
+.Variant_Group:after  { content: "\00a0" ;   }
+.Variant_Group:before  { content: " "; type-style: normal ; font-weight: normal ;  }
+/* .Notes_Grammar + .Variant_Group:before  { content: "; "; type-style: normal ; font-weight: normal ; } */
+.Variant_Type { font-style:italic ; }
+.Variant_Type:after {content: " "; }
+.Variant_Type_Missing { font-style:italic ; background-color:yellow;}
+.Variant_Type_Missing:after {content: "¡No hay tipo de variante!  Favor de arreglarlo en FLEx. "; }
+.Notes_Grammar ~ .variantrefs-minor01 .Variant_Type:before { content: " ";}
+.Main_Entry .Variant_Type:before {content: " "; }
+.Linguistic_Information_Group .Variant_Type:before {content: ""; }
+.Linguistic_Information_Group .Variant_Type:after {content: ""; }
+.Reference_Paragraph > .variantrefs01:first-child .Variant_Type:before {content: ""; }
+
+/* .Example_Sentence:first-of-type:before {content: " ?"; font-family: Arial;} }*/
+/*.Part_Of_Speech ~ .Part_Of_Speech {display: run-in ;  }*/
+/*.Subentry_Group:before { content: "? " ; }*/
+/*.Subentry_Group:before { content: "• " ; }*/
+/* ************************************** */
+/* **************** divs **************** */
+/* ************************************** */
+
+div.Front_Matter,  div.Spine, div.Spine2, div.Cover, div.Blank, div.Title, div.Preface, div.Contents, div.Copyright, div.List_Of_Abbreviations, div.Introduction, div.Back_Matter, div.Back {
+	page-break-before: always;
+	page: front_matter ;
+}
+
+div.Spine {
+	page: spine ;
+}
+
+div.Spine2 {
+	page: spine ;
+}
+
+div.Letter_Data { 
+   }
+div.Letter_Heading {
+    text-align: center ;
+    color: black ;
+    font-family: "Charis SIL AmArea" ;
+	font-size: 48pt;
+	font-weight: bold;
+	height: 60pt;  /* allow for descender */
+    margin: 24pt 0 0 0 ;
+    /* margin-left: -0.25in ; */  /* align with entry */
+    prince-bookmark-level: 1;  /* add letters to PDF bookmark */
+    prince-bookmark-label: content() ;
+    page-break-after: avoid ;
+    column-break-after: avoid ;
+    font-family:   "Charis SIL AmArea" ;
+
+}
+
+.Entries {
+
+	orphans: 1 ;
+	page-break-inside: auto  ;
+	text-align: justify;
+	widows: 1 ;
+	orphans: 1;
+    background-color: blue ;
+}
+
+div.Main_Entry { 
+	display: block;
+	color:black;
+	font-size: 10pt; 
+	line-height: 11.5pt; /*12.5pt;*/
+	margin: 0 0 0 11pt  ;
+	padding: 0 0 0 0;
+    margin-bottom: 2pt ;
+	page-break-inside: auto ;
+	text-align: left ; 
+	widows: 1 ;
+	orphans: 1;
+}
+div.Minor_Entry { 
+    display: block;
+    color:black;
+	font-size: 10pt; 
+	line-height: 11.5pt; /*12.5pt;*/
+	margin: 0 0 0 11pt  ;
+	margin-bottom: 2pt ;
+	padding: 0 0 0 0;
+	page-break-inside: auto ;
+	text-align: left;
+	widows: 1 ;
+	orphans: 1;
+}
+
+
+/* ************************************** */
+/* ************ headings **************** */
+/* ************************************** */
+h1, h2, h3, h4 {
+	font-family: "Charis SIL AmArea";
+	font-weight: bold;
+	margin 0;
+	padding: 0;   
+	text-align: left;
+}
+
+h1 { text-align: center;
+	background-color: white ;
+	direction: ltr;
+	font-size: 24pt;
+	font-weight: bold;
+	margin-bottom: 18pt;
+	margin-top: 18pt;
+}
+
+h2 {font-size: 150%;
+	page-break-after:auto ;
+	string-set: h2String  content() ;
+}
+
+/* h2 is direct child of div*/
+div.Contents > h2 {
+	margin: 32pt 0 16pt 0 ;	
+}
+/* h2 is direct child of div*/
+div.Preface > h2 {
+	margin: 0 0 32pt 0;
+}
+
+
+div.Contents h3 {
+	padding: 0 0 3pt 0;
+	text-align: center;
+}
+
+div.Copyright h3 {
+	background-color: white;
+	font-size: 100%;
+	padding: 36pt 0 0  0 ;
+	text-align: center;
+}
+
+div.Cover h1 {
+	background-color: white;
+	font-size: 400%;
+	margin: 144pt 282pt 0 0;
+	string-set: title;
+	text-align: left;
+}
+
+div.Blank	 h1 {
+	background-color: green;
+	font-size: 200%;
+	margin: 72pt 0 0 0;
+	page-break-before: always;
+	text-align: left;
+}
+div.Title h1 {
+	background-color: white;
+	font-size: 200%;
+	margin: 72pt 0 0 0;
+	padding: 0 0 36pt 0 ;
+	page-break-before: always;
+	text-align: center;
+}
+
+div.Title h3 {
+	background-color: white;
+	font-size: 100%;
+	padding: 36pt 0 0  0 ;
+	text-align: center;
+}
+
+div {    
+    font-family: "Charis SIL AmArea" ;  
+}
+
+.Section_Head  {
+	font-size: 9pt;
+	line-height: 13pt;
+	margin: 13pt 0 0 0;   
+	page-break-inside: avoid;
+	string-set: h3;
+}
+
+.Main_Title  {
+	font-size: 2em;
+	line-height: 26pt;
+	prince-page-group: start;
+	string-set: Main_Title_String content() 
+	page: first ;
+	counter-reset: page 1 ;
+}
+
+head title  {
+	font-size: 44pt ;
+	line-height: 48pt ;
+	margin-bottom: 24pt ;
+	prince-page-group: start;
+    /*replace hyphen or em-dash with hairspace on either side of emdash */
+    prince-text-replace: "—" "— " "-" " – " ;
+    string-set: Title_String content() ;
+	page: first ;
+	counter-reset: page 1 ;
+}
+
+head meta[name='footer'] {
+	string-set: Footer_String attr(content);
+}
+
+/* ************************************** */
+/* ********** paragraphs **************** */
+/* ************************************** */
+.Paragraph {background-color:red;
+}
+
+p { 
+	color:black;
+	font-size: 10pt; 
+	line-height: 13pt;
+/*	padding: 12pt 0 0 0; */
+	padding: 0 0 0 0;
+	page-break-inside: auto ;
+	text-align: left; 
+	margin-left: 0.25in;
+	widows: 2 ;
+	orphans: 2 ;
+
+ }
+
+ 
+.Preface > p, .Introduction > p { 
+	font-size: 11pt; 
+	margin: 0;
+	padding: 0;
+	text-align: justify; 
+	text-indent: 1.5em;
+	text-justify: newspaper;
+}
+
+
+
+
+.Language_Name {
+	float: bottom;
+	margin: 0;
+	padding: 0 0 0 0;
+	text-align: center;
+	text-indent: 0;
+}
+
+
+
+
+.Compiler:first:before  { content: "Compiled by";}
+.Compiler  {
+	text-align: center;
+	font-size: 120%;
+}
+
+td { padding: 12pt 24pt 0 0 ;
+	font-size: 12pt ;
+}	
+
+td.AbbreviationAbbreviation {
+	text-align: right; 
+}
+
+.Editor { 
+	text-align: center;
+	font-size: 120%;
+}
+.Publisher {
+	float: bottom;
+	font-size: 100%;
+	font-weight: bold;
+	text-align: center;
+	
+}
+.Publish_Place {
+	float: bottom;
+	font-size: 100%;
+	text-align: center;
+}
+
+.Copyright > p {
+	float: bottom;
+}
+.Copyright > p.Illustrator {
+	float: none;
+	font-size: 120%;
+	text-align: center;
+}
+
+
+/* ************************************** */
+/* ********** locator ******************* */
+/* ************************************** */
+.Locator_Left
+{
+    text-align: right;
+    flow:static(locator_left);	
+}
+.Locator_Right
+{
+    text-align: left;
+    flow:static(locator_right);	
+}
+.Locator
+{
+    text-align: left;
+    flow:static(locator_left);	
+}
+.Locator:after { text-align: right;
+        flow:static(locator_right);
+       } 
+     .Locator_Left a {
+        padding: 1pt 5pt 4pt 0 ; 
+        margin: 0 5pt 0 0  ;  
+    	font-weight: normal ;
+        display:block ;
+        line-height: 10pt ;
+        font-size: 10pt ;
+     ;
+    }
+
+
+.Locator_Right a 
+{
+   /* adjust padding to smaller numbers for alphabets containing more characters*/
+   /*       top, right, bottom, left */
+    padding: 1pt 0 4pt 5pt ;  
+    margin: 0 0 0 5pt   ;  
+	font-weight: normal ;
+    display:block ;
+    line-height: 10pt ;
+    font-size: 10pt ;
+}
+
+.Current_Letter
+{
+	color: white;
+	background-color: blue ;
+   
+}
+
+
+
+/* ************************************** */
+/* ********** Notes ********************* */
+/* ************************************** */
+
+
+.Note {
+	color: black;
+	display: footnote;
+	display: none;
+	display: prince-footnote;
+	font-size: 9pt;
+	font-weight: normal;
+	line-height: none;
+	list-style-position: inside;
+	margin-left: 1em; 
+	position: footnote;
+	text-align: left;
+	text-indent: 6pt;
+/*  font-family:arial, helvetica, sans-serif;*/
+}
+
+/* marker in footnote in front of the text */
+.Note::footnote-marker {
+	font-weight: bold;
+	text-align: left;
+}
+
+/* marker in the body text indicating a footnote*/
+.Note::footnote-call {
+	font-size: 6pt;
+	line-height: none;
+	vertical-align: super;
+}
+
+
+/* cross-references and footnotes */
+.crossReference{
+	color: black;
+	display: footnote;
+	display: none;
+	display: prince-footnote;
+	font-size: 9pt;
+	font-weight: normal;
+	line-height: none;
+	list-style-position: inside;
+	margin-left: 4em;
+	position: footnote;
+	text-align: left;
+	text-indent: 0;
+/*  font-family:arial, helvetica, sans-serif;*/
+}
+.Note_general {
+	color: black;
+	display: footnote;
+	display: none;
+	display: prince-footnote;
+	font-size: 9pt;
+	font-weight: normal;
+	line-height: none;
+	list-style-position: inside;
+	margin-left: 3em; 
+	position: footnote;
+	text-align: left;
+	text-indent: 0;
+/*  font-family:arial, helvetica, sans-serif;*/
+}
+
+/* marker in the body text indicating a cross-reference*/
+.crossReference::footnote-call {
+	content: '\2020' ' ';
+	font-size: 6pt;
+	line-height: none;
+	vertical-align: super;
+}
+
+/* marker in the body text indicating a footnote*/
+.Note_general::footnote-call {
+	content: '\2021' ' ';
+	font-size: 6pt;
+	line-height: none;
+	vertical-align: super;
+}
+/* marker in footnote in front of the text */
+.Note_general::footnote-marker {
+  /*  font-size: 10pt; */
+	content: string(chapterx) ":" string(versex) 'Â ' ; /* non breaking space*/
+	font-weight: bold;
+	text-align: left;
+}
+
+/* marker in footnote for the cross-reference */
+.crossReference::footnote-marker {
+	content: string(chapterx) ":" string(versex)  'Â ';
+	font-weight: bold;
+	text-align: left;
+ /*  font-size: 10pt;*/
+}
+/* end of: cross-references and footnotes */
+
+
+
+
+
+
+/* ************************************** */
+/* ********** images figures graphics *** */
+/* ************************************** */
+
+/* images - figures - graphics */
+
+
+/* 
+src="../pictures/atap.jpg"
+*/
+
+
+div img{
+	margin: 0;
+	padding: 0pt;
+
+
+/*  width: 100%;
+*/
+}
+
+
+/*
+div { width: 100%}
+img { 
+	counter-increment: figures ;
+	}
+
+img:after {
+	content: "Figure:" counter(figures) ": " attr(alt)  ;
+	float: bottom;
+	font-size: 1em;
+	text-align: center; 
+ }
+*/
+div.pictureSingleColumnBottom {
+	background-coloor: pink ;
+	border: solid 3px ;
+	float: bottom;
+	width: 50%
+}
+div.pictureSingleColumnTop {
+	
+	border: solid 3px green;
+	float: top;
+	width: 50%
+}
+
+.Picture_Group +   .Lemma {
+    margin-left: -0.25in ;
+    /* need in order to outdent Lemma after Picture_Group*/
+}
+.Picture_Group {
+	/*height: 1in; *//*84pt ; */
+	margin: 4pt 10pt 16pt 0 ;
+    text-indent: 0pt;
+    text-align: center;
+    page-break-before: auto ;   
+    page-break-inside: avoid ; 
+    /* float:right; No float; Tom wants it after the entry contents. */
+}
+
+.Picture_Caption {
+    height: 12 pt ;
+    display: block ;
+    text-align: center;
+    /* margin: 0 0 0 0  ;
+    padding: 0 0 0 0 ; */
+    font-size: 9pt ;
+    font-style: italic ;
+    font-weight: bold ;
+    vertical-align: text-top ;
+ }
+ 
+ .pictureLabel > .xitem + .xitem:before {
+    content:" ";
+ }
+/* end of: images - figures - graphics */
+
+/* images - figures - graphics */
+
+div.picture{
+	border-color: #ff0000;
+	border-style: solid;
+	border-width: 1px;
+	float: attr(float);
+	margin-bottom: attr(margin-bottom);
+	margin-left: attr(margin-left);
+	margin-right: attr(margin-right);
+	margin-top: attr(margin-top);
+	padding: 0;
+	page-break-inside: avoid;
+	text-align: center;
+}
+
+div img{
+	display: inline;
+	height: inherit;
+	margin: 0;
+	padding: 0;
+	/*prince-image-resolution: normal;
+	width: 1in; 
+	height: 1in;*/
+	
+/*  width: 100%;
+*/
+}
+
+img.Play { height: 15px   ;
+    margin-right: 3pt ;
+    }
+
+
+div.caption{
+	font-size: 8pt;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: auto;
+/*  top: -3pt; */
+ }
+
+/*div.img caption p{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	width: 12pc;
+}
+*/
+
+/* end of: images - figures - graphics */
+
+
+
+/* ************************************** */
+/* ********** page ********************** */
+/* ************************************** */
+
+
+@page spine {
+	size: 0.75in 8in portrait;
+	@top-center {
+	border-bottom: none ;    
+	content: normal;
+        }
+	@top-left {
+	border-bottom: none ;    
+	content: normal;
+        }
+	@top-right {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@bottom-left {
+	content: normal;
+	}
+	@bottom-center {
+	content: normal;
+	}
+	@bottom-right {
+	content: normal;
+}}
+
+@page front_matter {
+	/* override default page setting so there is no content */
+	@top-left {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@top-center {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@top-right {
+	border-bottom: none ;    
+	content: normal;
+	}
+	@bottom-left {
+	content: normal;
+	}
+	@bottom-center {
+	content: normal;
+	}
+	@bottom-right {
+	content: normal;
+}}/* end front matter */
+
+@page back_matter {
+	/* override default page setting so there is no content */
+	@top-center {
+	content: normal;
+	}
+	@bottom-left {
+	content: normal;
+	}
+	@bottom-center {
+	content: normal;
+	}
+	@bottom-right {
+	content: normal;
+}}/* end front matter */
+
+    
+    @page :first { 
+        @top-left { content: none }
+        @top-right {content: none }
+        @top-center { content: none}
+        @bottom-left {content: none}
+        @bottom-center { 
+            font-size: 10pt;
+     	   content: string( Footer_String); 
+                }
+        @bottom-right {content: none }
+}
+

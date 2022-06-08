@@ -1,0 +1,128 @@
+/* Cascading Style Sheet for dictionaries; 6.6 x 8.5 inch layout info */
+
+body {
+	font-family: "Charis SIL AmArea" ;
+    column-count: 2; -moz-column-count: 1; -webkit-column-count: 1;
+	column-fill: auto;
+	column-gap: .25in; -moz-column-gap: .25in; -webkit-column-gap: .25in;
+/*    column-fill: balance ;  */
+    font-size: 10pt ;
+    counter-reset: page 3;
+  }
+
+@page
+    {
+        /* to use Princess for pictures: page size in inches and portrait required ... in inches */
+        size: 6.6in 8.5in portrait ;
+        margin: 1in 1in 1in 1in ;
+        margin-top: .7in;
+        margin-outside: .4in;
+        margin-bottom: .4in;
+        margin-inside: .8in;
+        
+        font-family: "Charis SIL AmArea" ;  
+        direction: ltr;
+        font-weight: normal;
+        font-size: 4pt;
+    /*    marks: crop cross ;*/
+    
+         
+    	@top-center  {
+           font-weight: normal ;
+    	   border-bottom: none ;
+           margin-bottom: 0pt ; 
+    	   margin-top: 12pt ;
+           font-size: 9.5pt;
+     	   content: string( Title_String); 
+           font-family: "Charis SIL Small Caps";
+    }
+        @top-left {  
+           font-size: 10pt ; 
+           content: normal ; 
+           border-bottom: none ; 
+           margin-bottom: 0pt ;
+    	   margin-top: 12pt ;
+     }
+        @top-right {  
+           font-size: 10pt ; 
+           content: normal ; 
+           border-bottom: none ; 	
+           margin-bottom: 0pt ;
+    	   margin-top: 12pt ;
+    }
+        @bottom-left {  content: normal ; }
+        @bottom-center { 
+            font-size: 10pt;
+     	   content: string( Footer_String); 
+     	   margin-top: -13pt;
+    }    
+        @bottom-right { content: normal }
+    }
+    
+/* Running Head Mirrored.css */
+@page :left {      
+    margin: .7in .8in .4in .4in ;
+    
+    @top-left {
+        content: string( Guideword_String, first);
+       /*margin-left: -12pt; */
+       }
+    @top-center    
+    { 
+    }
+
+    @top-right {        
+        /*font-size: 10pt; */ 
+        content: counter( page);
+    }
+
+    @bottom-left 
+    {
+    }
+
+   @bottom-center
+   {
+                          font-size: 10pt;
+     	   content: string( Footer_String); 
+   }
+   @left-top
+    {
+	content: flow(locator_left) ;
+   	    margin-right: 0;
+        text-align: left ;
+  }
+}
+
+@page :right {
+    margin: .7in .4in .4in .8in ;
+   
+    @top-right  
+    {
+        content: string( Guideword_String, last);
+    }
+   
+   
+   
+   @bottom-center
+   {
+            font-size: 10pt;
+     	   content: string( Footer_String); 
+   }
+     @bottom-right   
+    { 
+    }
+    @top-left 
+    {        content: counter(page); 
+        /* font-size: 10pt; */ 
+        /* margin-left: -12pt;  */
+    }
+    @right-top
+    {
+content: flow(locator_right) ;
+        margin-left: 0;
+        text-align: right ;
+
+}
+
+}
+
