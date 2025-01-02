@@ -217,7 +217,7 @@
 					</xsl:choose>
 				</span>
 				<span class="Definition">
-					<xsl:apply-templates select="descendant-or-self::x:span[@class='summarydefinition' or @class='restrictions']"/>
+					<xsl:apply-templates select="descendant-or-self::x:span[@class='summarydefinition' or @class='restrictions' or @class='descripción-breve']"/>
 				</span>
 			</span>
 		</div>

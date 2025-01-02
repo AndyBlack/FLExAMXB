@@ -13,7 +13,7 @@ RequestExecutionLevel highest
 
 # MUI Symbol Definitions
 !define MUI_ICON "MXB-FLEX-InstallerForFW8.ico"
-!define MUI_PRODUCT "FLEx a MXB Ver. 3.18"
+!define MUI_PRODUCT "FLEx a MXB Ver. 3.19"
 !define MUI_FILE "FLExAMXB"
 #!define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 #!define MUI_STARTMENUPAGE_NODISABLE
@@ -58,7 +58,7 @@ RequestExecutionLevel highest
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile MXB-FLEx-Exporter-Installerv3.18SetupForFW8.3.exe
+OutFile MXB-FLEx-Exporter-Installerv3.19SetupForFW8.3.exe
 InstallDir $PROGRAMFILES\SIL\MXB-FLEx
 CRCCheck on
 XPStyle on
