@@ -107,7 +107,7 @@ Section -Main SEC0000
     ; Produce web page and/or PDF program
     ;
     SetOutPath "$PROGRAMFILES\SIL\MXB-FLEx"
-    File /r "..\JimAlbrightWork\FLExAMXB\bin\Release\*"
+    File /r "..\src\bin\Release\*"
 ;create desktop shortcut
   CreateShortCut "$DESKTOP\${MUI_PRODUCT}.lnk" "$INSTDIR\${MUI_FILE}.exe" ""
  
