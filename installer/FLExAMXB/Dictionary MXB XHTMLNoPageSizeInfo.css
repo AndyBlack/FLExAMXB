@@ -238,8 +238,8 @@ line-height:none;
 .primaryrefs:after { content: "\00a0" ; }
 .complexformentryrefs:after { content: "\00a0" ; }
 .Pronunciation { }
-.Pronunciation:before {content: "(" ;  }
-.Pronunciation:after {content: ")\00a0" ; }
+.Pronunciation:before {content: "[" ;  }
+.Pronunciation:after {content: "]\00a0" ; }
 
 .Regional_Variant:before {content: "(";}
 .Regional_Variant:after {content: ")\00a0";}

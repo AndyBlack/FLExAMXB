@@ -128,6 +128,7 @@
 				<xsl:when test=".='minorentry'">Minor_Entry</xsl:when>
 				<xsl:when test=".='minorentryvariant'">Minor_Entry</xsl:when>
 				<xsl:when test="starts-with(.,'partofspeech')">Part_Of_Speech</xsl:when>
+				<xsl:when test="starts-with(.,'graminfoabbrev')">Part_Of_Speech</xsl:when>
 				<!--<xsl:when test=".='partofspeech-complexform'">Part_Of_Speech</xsl:when>-->
 				<xsl:when test=".='pictureCaption'">Picture_Caption</xsl:when>
 				<xsl:when test=".='caption'">Picture_Caption</xsl:when>
