@@ -217,7 +217,16 @@
 					</xsl:choose>
 				</span>
 				<span class="Definition">
-					<xsl:apply-templates select="descendant-or-self::x:span[@class='summarydefinition' or @class='restrictions' or @class='descripción-breve']"/>
+					<xsl:choose>
+						<xsl:when test="descendant-or-self::x:span[@class='descripción-breve']">
+							<span class="Description_Brief">
+							    <xsl:apply-templates select="descendant-or-self::x:span[@class='descripción-breve']"/>
+							</span>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:apply-templates select="descendant-or-self::x:span[@class='summarydefinition' or @class='restrictions']"/>
+						</xsl:otherwise>
+					</xsl:choose>
 				</span>
 			</span>
 		</div>
